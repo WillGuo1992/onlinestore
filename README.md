@@ -1,5 +1,9 @@
-# Elec_Project
-## Day1:
->s2sh环境搭建
-## Day2:
->Hibernate Spring and Struts 数据库查询DAO工具搭建
+#网上商城
+##技术点
+* abc
+* asdads
+
+##功能点
+1. asdfas
+2. dasda
+3. sadfaf
