@@ -9,6 +9,7 @@ import utils.UUIDUtils;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -83,6 +84,35 @@ public class UserServlet extends BaseServlet {
     public String login(HttpServletRequest request, HttpServletResponse response) throws IOException {
         User user = MyBeanUtils.populate(User.class, request.getParameterMap());
         user = userService.checkUserByUsernameAndPassword(user);
+
+        String autologin = request.getParameter("autologin");
+        String noteusername = request.getParameter("noteusername");
+
+        if(autologin!=null && user!=null){
+            Cookie cookie = new Cookie("autologincookie",user.getUsername()+"@"+user.getPassword());
+            cookie.setMaxAge(1000 * 60 * 60);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        } else {
+            Cookie cookie = new Cookie("autologincookie","");
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
+
+        if(noteusername!=null &&  user!=null ){
+            Cookie cookie = new Cookie("autousername",user.getUsername());
+            cookie.setMaxAge(1000 * 60 * 60);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        } else {
+            Cookie cookie = new Cookie("autousername","");
+            cookie.setMaxAge(0);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
+
+
         if (user == null) {
             request.setAttribute("msg", "用户名或密码错误");
             return "UserServlet?method=loginUI";
