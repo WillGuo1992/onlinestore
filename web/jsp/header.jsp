@@ -7,6 +7,17 @@
     <script src="../js/bootstrap.min.js"></script>
     <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+        $(function () {
+            var url = "/IndexServlet";
+            $.post(url,{"method":"getcategories"},function (data) {
+                $.each(data , function (index, element) {
+                    $("#menu").append("<li><a>"+ element.cname +"</a></li>");
+                })
+            });
+        });
+        
+    </script>
 </head>
 <body>
 <div class="container">
@@ -46,12 +57,10 @@
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li><a href="#">手机数码</a></li>
-                            <li><a href="#">电脑办公</a></li>
-                            <li><a href="#">鞋靴箱包</a></li>
-                            <li><a href="#">移动设备</a></li>
-
+                        <ul class="nav navbar-nav" id="menu">
+                            <c:forEach items="${categories}" var="category">
+                                <li><a href="#">${category.cname}</a></li>
+                            </c:forEach>
                         </ul>
                         <form class="navbar-form navbar-right">
                             <div class="form-group">
