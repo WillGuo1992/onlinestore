@@ -31,4 +31,15 @@ public class JedisUtils {
     public static void main(String[] args){
         getJedis();
     }
+
+    public static String getString(String key) {
+        Jedis jedis = getJedis();
+        return jedis.get(key);
+    }
+
+    public static void setString(String key, String value, int seconds) {
+        Jedis jedis = getJedis();
+        jedis.append(key, value);
+        jedis.expire(key, seconds);
+    }
 }

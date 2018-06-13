@@ -4,6 +4,7 @@ import domain.Category;
 import net.sf.json.JSONArray;
 import service.CategoryService;
 import service.impl.CategoryServiceImp;
+import utils.JedisUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,9 +23,14 @@ public class IndexServlet extends BaseServlet {
     }
 
     public String getcategories(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        CategoryService categoryService = new CategoryServiceImp();
-        List categories = categoryService.findall();
-        String jsonStr = JSONArray.fromObject(categories).toString();
+        String jsonStr = null;
+        jsonStr = JedisUtils.getString("categories");
+        if (jsonStr == null) {
+            CategoryService categoryService = new CategoryServiceImp();
+            List categories = categoryService.findall();
+            jsonStr = JSONArray.fromObject(categories).toString();
+            JedisUtils.setString("categories",jsonStr,10);
+        }
         resp.setContentType("application/json;charset=UTF-8");
         resp.getWriter().write(jsonStr);
         return null;
