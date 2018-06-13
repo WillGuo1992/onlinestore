@@ -1,9 +1,12 @@
 package servlet;
 
 import domain.Category;
+import domain.Product;
 import net.sf.json.JSONArray;
 import service.CategoryService;
+import service.ProductService;
 import service.impl.CategoryServiceImp;
+import service.impl.ProductServiceImp;
 import utils.JedisUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +22,11 @@ import java.util.List;
 public class IndexServlet extends BaseServlet {
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) {
+        ProductService productService = new ProductServiceImp();
+        List hotProducts =  productService.findhot();
+        List newProducts = productService.findnew();
+        req.setAttribute("hotProducts",hotProducts);
+        req.setAttribute("newProducts",newProducts);
         return "jsp/index.jsp";
     }
 
