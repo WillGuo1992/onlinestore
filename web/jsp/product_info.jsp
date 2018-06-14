@@ -16,7 +16,7 @@
             var paras = {"method":"getCnamebyPid","pid":"${product.pid}"}
             $.post(url,paras,function (data) {
                 $("#categoryName").text(data.cname);
-                $("#categoryName").attr("href","/ProductServlet?method=getByCid&cid="+data.cid);
+                $("#categoryName").attr("href","/ProductServlet?method=findByCid&cid="+data.cid);
             });
         });
     </script>

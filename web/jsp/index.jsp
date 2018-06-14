@@ -78,7 +78,7 @@
         </div>
         <div class="col-md-10">
             <div class="col-md-6" style="text-align:center;height:200px;padding:0px;">
-                <a href="product_info.htm">
+                <a href="#">
                     <img src="products/hao/middle01.jpg" width="100%" height="200px" style="display: inline-block;">
                 </a>
             </div>

@@ -64,4 +64,40 @@ public class ProductDaoImp implements ProductDao {
         }
         return null;
     }
+
+    @Override
+    public List findProductsByCid(String cid) {
+        QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+        String sql = "select * from product where cid = ? ";
+        try {
+            return qr.query(sql, new BeanListHandler<Product>(Product.class),cid);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public List findPageByCid(String cid, int startIndex, int pageSize) {
+        QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+        String sql = "select * from product where cid = ? limit ? offset ?";
+        try {
+            return qr.query(sql, new BeanListHandler<Product>(Product.class),cid,pageSize,startIndex);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Category findCategoryByCid(String cid) {
+        QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+        String sql = "select * from category  where cid = ? ";
+        try {
+            return qr.query(sql, new BeanHandler<Category>(Category.class),cid);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

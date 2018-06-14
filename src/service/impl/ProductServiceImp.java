@@ -3,7 +3,9 @@ package service.impl;
 import dao.ProductDao;
 import dao.imp.ProductDaoImp;
 import domain.Category;
+import domain.PageBean;
 import domain.Product;
+import service.CategoryService;
 import service.ProductService;
 
 import java.util.Date;
@@ -34,6 +36,21 @@ public class ProductServiceImp implements ProductService {
     @Override
     public Category getCategorybyPid(String pid) {
         return productDao.findCategorybyid(pid);
+    }
+
+    @Override
+    public List findByCid(String cid) {
+        return productDao.findProductsByCid(cid);
+    }
+
+    @Override
+    public List findPageByCid(String cid, PageBean<Product> pageBean) {
+        return productDao.findPageByCid(cid,pageBean.getStartIndex(),pageBean.getPageSize());
+    }
+
+    @Override
+    public Category getCategorybyCid(String cid) {
+        return productDao.findCategoryByCid(cid);
     }
 
 }

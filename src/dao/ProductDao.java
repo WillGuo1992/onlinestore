@@ -13,4 +13,10 @@ public interface ProductDao {
     Product findbyid(String pid);
 
     Category findCategorybyid(String pid);
+
+    List findProductsByCid(String cid);
+
+    List findPageByCid(String cid, int startIndex, int pageSize);
+
+    Category findCategoryByCid(String cid);
 }

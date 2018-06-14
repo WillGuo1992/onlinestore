@@ -1,6 +1,7 @@
 package service;
 
 import domain.Category;
+import domain.PageBean;
 import domain.Product;
 
 import java.util.Date;
@@ -14,4 +15,10 @@ public interface ProductService {
     Product findbyid(String pid);
 
     Category getCategorybyPid(String pid);
+
+    List findByCid(String cid);
+
+    List findPageByCid(String cid, PageBean<Product> pageBean);
+
+    Category getCategorybyCid(String cid);
 }

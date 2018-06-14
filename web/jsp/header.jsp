@@ -12,7 +12,7 @@
             var url = "/IndexServlet";
             $.post(url,{"method":"getcategories"},function (data) {
                 $.each(data , function (index, element) {
-                    $("#menu").append("<li><a>"+ element.cname +"</a></li>");
+                    $("#menu").append("<li><a href='/ProductServlet?method=findByCid&cid="+element.cid+"'>"+ element.cname +"</a></li>");
                 })
             });
         });
