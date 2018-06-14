@@ -30,7 +30,7 @@ public class IndexServlet extends BaseServlet {
         return "jsp/index.jsp";
     }
 
-    public String getcategories(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    public String getcategoriesUsingRedis(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String jsonStr = null;
         jsonStr = JedisUtils.getString("categories");
         if (jsonStr == null) {
@@ -39,6 +39,17 @@ public class IndexServlet extends BaseServlet {
             jsonStr = JSONArray.fromObject(categories).toString();
             JedisUtils.setString("categories",jsonStr,10);
         }
+        resp.setContentType("application/json;charset=UTF-8");
+        resp.getWriter().write(jsonStr);
+        return null;
+    }
+
+    public String getcategories(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String jsonStr = null;
+        CategoryService categoryService = new CategoryServiceImp();
+        List categories = categoryService.findall();
+        jsonStr = JSONArray.fromObject(categories).toString();
+
         resp.setContentType("application/json;charset=UTF-8");
         resp.getWriter().write(jsonStr);
         return null;
