@@ -27,4 +27,11 @@
    * 商品分类
    * 商品分页
 3. adasd
-
+--------------------
+### 部分截图 ###
+ ![Alt text](./reference/screenshot/首页.png)
+ ![Alt text](./reference/screenshot/会员登录.png)
+ ![Alt text](./reference/screenshot/注册.png)
+ ![Alt text](./reference/screenshot/商品分类.png)
+ ![Alt text](./reference/screenshot/商品详情.png)
+ ![Alt text](./reference/screenshot/)

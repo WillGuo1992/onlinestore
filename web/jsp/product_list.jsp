@@ -47,7 +47,7 @@
         <div class="col-md-12">
             <ol class="breadcrumb">
                 <li><a href="/IndexServlet">首页</a></li>>
-                <li><a id="categoryName" href="#">###</a></li>
+                <li><a id="categoryName" href="#"></a></li>
             </ol>
         </div>
     </div>
