@@ -69,13 +69,16 @@
                                 ${product.pdesc}
                                 <br>	&ensp;	&ensp;
                             </div>
-                            <div style="margin:20px 0 10px 0;;text-align: center;">
-                                购买数量:<input id="quantity" value="1" type="text" />
-                                <br>
-                                <a href="#">
-                                    <input value="加入购物车" type="button" style="margin-top: 20px;background: url('../img/product.gif') no-repeat scroll 0 -600px rgba(0, 0, 0, 0);height:36px;width:127px;">
-                                </a>
-                            </div>
+                            <form method="get" action="/CartServlet">
+                                <div style="margin:20px 0 10px 0;;text-align: center;">
+                                    购买数量:<input id="quantity" name="count" value="1" type="text" />
+                                    <br>
+                                    <input type="hidden" name="method" value="addToCart">
+                                    <input type="hidden" name="pid" value="${product.pid}">
+                                    <input value="加入购物车" type="submit" style="margin-top: 20px;background: url('../img/product.gif') no-repeat scroll 0 -600px rgba(0, 0, 0, 0);height:36px;width:127px;">
+
+                                </div>
+                            </form>
                         </div>
                     </div>
 

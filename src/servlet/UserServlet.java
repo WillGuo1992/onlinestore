@@ -125,6 +125,7 @@ public class UserServlet extends BaseServlet {
 
     public String logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         request.getSession().removeAttribute("user");
+        request.getSession().removeAttribute("cart");
         return "IndexServlet?method=execute";
     }
 

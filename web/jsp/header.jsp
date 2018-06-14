@@ -32,7 +32,7 @@
                 </c:if>
                 <c:if test="${not empty user}">
                     <li><a href="#">欢迎您,${user.name}</a></li>
-                    <li><a href="#">我的订单</a></li>
+                    <li><a href="/jsp/cart.jsp">我的订单</a></li>
                     <li><a href="/UserServlet?method=logout">注销</a></li>
                 </c:if>
             </ol>
