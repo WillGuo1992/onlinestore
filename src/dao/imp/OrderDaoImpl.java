@@ -1,9 +1,12 @@
 package dao.imp;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import dao.OrderDao;
 import domain.Order;
 import domain.OrderItem;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
+import utils.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -36,6 +39,30 @@ public class OrderDaoImpl implements OrderDao {
         Object[] objects = {item.getItemid(), item.getCount(), item.getSubtotal(), item.getProduct().getPid(), item.getOrder().getOid()};
         try {
             qr.update(conn, sql, objects);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Order findByOid(String oid) {
+        QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+        String sql = "select * from orders where oid = ?";
+        try {
+            return qr.query(sql,new BeanHandler<Order>(Order.class),  oid);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public void updateOrderByOid(Order order) {
+        QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+        String sql = "update orders set state = 2 ,address= ? , name= ? , telephone= ? where oid = ? ";
+        int update ;
+        try {
+            update = qr.update(sql, order.getAddress(), order.getName(), order.getTelephone(), order.getOid());
         } catch (SQLException e) {
             e.printStackTrace();
         }

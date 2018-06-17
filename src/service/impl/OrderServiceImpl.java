@@ -17,12 +17,15 @@ import java.sql.SQLException;
  * @create: 2018-06-15 16:07
  **/
 public class OrderServiceImpl implements OrderService {
+
+    OrderDao dao = new OrderDaoImpl();
+
     @Override
     public void save(Order order) throws SQLException {
         Connection conn = null;
         try {
             conn = JDBCUtil.getConnection();
-            OrderDao dao = new OrderDaoImpl();
+
             dao.save(conn,order);
             for (Object var : order.getList()) {
                 OrderItem item = (OrderItem) var;
@@ -34,4 +37,17 @@ public class OrderServiceImpl implements OrderService {
         }
 
     }
+
+    @Override
+    public Order findOrderBtOid(String oid) {
+        return dao.findByOid(oid);
+    }
+
+    @Override
+    public void updateOrderByOid(Order order) {
+        dao.updateOrderByOid(order);
+    }
+
+
+
 }

@@ -14,4 +14,8 @@ public interface OrderDao {
     void save( Connection conn,Order order);
 
     void save(Connection conn,OrderItem item);
+
+    Order findByOid(String oid);
+
+    void updateOrderByOid(Order order);
 }

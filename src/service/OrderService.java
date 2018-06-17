@@ -11,4 +11,8 @@ import java.sql.SQLException;
  **/
 public interface OrderService {
     void save(Order order) throws SQLException;
+
+    Order findOrderBtOid(String oid);
+
+    void updateOrderByOid(Order order);
 }

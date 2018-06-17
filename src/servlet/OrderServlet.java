@@ -1,8 +1,11 @@
 package servlet;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
 import domain.*;
+import org.omg.CORBA.ORB;
 import service.OrderService;
 import service.impl.OrderServiceImpl;
+import utils.MyBeanUtils;
 import utils.UUIDUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +19,9 @@ import java.util.Date;
  * @create: 2018-06-15 16:06
  **/
 public class OrderServlet extends BaseServlet {
+
+    OrderService orderService = new OrderServiceImpl();
+
     public String saveorder(HttpServletRequest req, HttpServletResponse response) throws SQLException {
         Cart cart = (Cart) req.getSession().getAttribute("cart");
         User user = (User) req.getSession().getAttribute("user");
@@ -36,12 +42,27 @@ public class OrderServlet extends BaseServlet {
             order.getList().add(orderItem);
         }
 
-        OrderService orderService = new OrderServiceImpl();
+
         orderService.save(order);
 
-        cart.removeAll();
-        System.out.println(order.getList().size());
+//        cart.removeAll();
         req.setAttribute("order", order);
         return "jsp/order_info.jsp";
+    }
+
+    public String payOrder(HttpServletRequest req, HttpServletResponse resp) {
+        Order orderGet = MyBeanUtils.populate(Order.class, req.getParameterMap());
+        Order order = orderService.findOrderBtOid(orderGet.getOid());
+        order.setAddress(orderGet.getAddress());
+        order.setName(orderGet.getName());
+        order.setTelephone(orderGet.getTelephone());
+        order.setState(2);
+
+        orderService.updateOrderByOid(order);
+
+        //第三方支付
+
+
+        return null;
     }
 }
