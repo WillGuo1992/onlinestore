@@ -31,7 +31,7 @@
                     <c:forEach items="${cart.map}" var="entryset">
                         <tr class="active">
                             <td width="60">
-                                <img src="/${entryset.value.product.pimage}" style="width: 60">
+                                <img src="/${entryset.value.product.pimage}" style="width: 60px">
                             </td>
                             <td width="30%">${entryset.value.product.pname}</td>
                             <td width="20%">￥${entryset.value.product.shop_price}</td>
@@ -48,8 +48,9 @@
                 </div>
                 <div style="text-align:right;margin-top:10px;margin-right: 30px;">
                     <a href="/CartServlet?method=deleteAll">清空购物车</a>
-                    <input type="submit" value="提交订单" style="background: url('../img/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-						height:35px;width:100px;color:white; ">
+                    <input type="button" value="提交订单" style="background: url('../img/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+						height:35px;width:100px;color:white; " onclick="window.location.href = '/OrderServlet?method=saveorder';
+						">
                 </div>
             </div>
 

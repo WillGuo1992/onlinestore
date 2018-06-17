@@ -2,7 +2,9 @@ package domain;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -57,5 +59,13 @@ public class Cart {
             total += cartItem.getItemTotal();
         }
         return total;
+    }
+
+    public List<CartItem> getCartItems() {
+        List<CartItem> list = new ArrayList<>();
+        for (Map.Entry<String,CartItem> entry : map.entrySet()) {
+            list.add(entry.getValue());
+        }
+        return list;
     }
 }
