@@ -47,7 +47,8 @@
         * 图片文件上传
         * 增|删|改|查
         * 上架|下架
-        
+   * 后台订单管理(未开发)
+   * 后台用户管理(未开发)
 --------------------
 ### 部分截图 ###
  ![Alt text](./reference/screenshot/首页.png)
@@ -56,4 +57,6 @@
  ![Alt text](./reference/screenshot/商品分类.png)
  ![Alt text](./reference/screenshot/商品详情.png)
  ![Alt text](./reference/screenshot/购物车.png)
- ![Alt text](./reference/screenshot/)
+ ![Alt text](./reference/screenshot/后台首页.png)
+ ![Alt text](./reference/screenshot/后台商品管理.png)
+ ![Alt text](./reference/screenshot/后台添加商品.png)
