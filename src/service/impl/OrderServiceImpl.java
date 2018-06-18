@@ -8,8 +8,10 @@ import org.apache.commons.dbutils.DbUtils;
 import service.OrderService;
 import utils.JDBCUtil;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @description:
@@ -48,6 +50,15 @@ public class OrderServiceImpl implements OrderService {
         dao.updateOrderByOid(order);
     }
 
+    @Override
+    public List findOrdersByUid(String uid) {
+        try {
+            return dao.findByUid(uid);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
 
 }

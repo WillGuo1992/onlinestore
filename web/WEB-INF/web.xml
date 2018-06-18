@@ -29,7 +29,9 @@
     <filter-mapping>
         <filter-name>HasLoginFilter</filter-name>
         <url-pattern>/CartServlet</url-pattern>
-        <url-pattern>/abc</url-pattern>
+        <url-pattern>/OrderServlet</url-pattern>
+        <url-pattern>/jsp/order_info.jsp</url-pattern>
+        <url-pattern>/jsp/cart.jsp</url-pattern>
     </filter-mapping>
 
     <servlet>

@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-12">
             <div style="margin:0 auto; margin-top:10px;width:950px;">
-                <strong style="font-size:16px;margin:5px 0;">订单详情</strong>
+                <strong style="font-size:16px;margin:5px 0;">购物车详情</strong>
                 <table class="table table-bordered" style="vertical-align: central">
                     <tbody>
                     <tr class="warning">

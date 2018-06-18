@@ -3,7 +3,10 @@ package dao;
 import domain.Order;
 import domain.OrderItem;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @description:
@@ -18,4 +21,6 @@ public interface OrderDao {
     Order findByOid(String oid);
 
     void updateOrderByOid(Order order);
+
+    List findByUid(String uid) throws SQLException, InvocationTargetException, IllegalAccessException;
 }

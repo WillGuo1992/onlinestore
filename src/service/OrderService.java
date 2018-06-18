@@ -3,6 +3,7 @@ package service;
 import domain.Order;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * @description: 订单service
@@ -15,4 +16,6 @@ public interface OrderService {
     Order findOrderBtOid(String oid);
 
     void updateOrderByOid(Order order);
+
+    List findOrdersByUid(String uid);
 }
