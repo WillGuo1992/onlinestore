@@ -31,6 +31,7 @@
         <url-pattern>/CartServlet</url-pattern>
         <url-pattern>/OrderServlet</url-pattern>
         <url-pattern>/jsp/order_info.jsp</url-pattern>
+        <url-pattern>/jsp/order_list.jsp</url-pattern>
         <url-pattern>/jsp/cart.jsp</url-pattern>
     </filter-mapping>
 
@@ -86,5 +87,14 @@
     <servlet-mapping>
         <servlet-name>OrderServlet</servlet-name>
         <url-pattern>/OrderServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AdminCategoryServlet</servlet-name>
+        <servlet-class>servlet.AdminCategoryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminCategoryServlet</servlet-name>
+        <url-pattern>/AdminCategoryServlet</url-pattern>
     </servlet-mapping>
 </web-app>
