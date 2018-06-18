@@ -68,7 +68,7 @@ public class ProductDaoImp implements ProductDao {
     @Override
     public List findProductsByCid(String cid) {
         QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
-        String sql = "select * from product where cid = ? ";
+        String sql = "select * from product where pflag=0 and cid = ? ";
         try {
             return qr.query(sql, new BeanListHandler<Product>(Product.class),cid);
         } catch (SQLException e) {
@@ -76,11 +76,10 @@ public class ProductDaoImp implements ProductDao {
         }
         return null;
     }
-
     @Override
     public List findPageByCid(String cid, int startIndex, int pageSize) {
         QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
-        String sql = "select * from product where cid = ? limit ? offset ?";
+        String sql = "select * from product where pflag=0 and cid = ? limit ? offset ?";
         try {
             return qr.query(sql, new BeanListHandler<Product>(Product.class),cid,pageSize,startIndex);
         } catch (SQLException e) {
@@ -95,6 +94,43 @@ public class ProductDaoImp implements ProductDao {
         String sql = "select * from category  where cid = ? ";
         try {
             return qr.query(sql, new BeanHandler<Category>(Category.class),cid);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public void save(Product product) {
+        QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+        String sql = "insert into product values (?,?,?,?,?,?,?,?,?,?)";
+        Object[] params = {product.getPid(), product.getPname(), product.getMarket_price(), product.getShop_price(), product.getPimage(),
+                product.getPdate(), product.getIs_hot(), product.getPdesc(), product.getPflag(), product.getCid()};
+        try {
+            qr.update(sql, params);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void updatePflagByPid(String pid, int pflag) {
+        QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+        String sql = "update product set pflag = ? where pid = ?";
+        try {
+            qr.update(sql, pflag,pid);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List findAllByPflag(int pfalg) {
+        QueryRunner qr = new QueryRunner(JDBCUtil.getDataSource());
+        String sql = "select * from product  where pflag = ? ";
+        try {
+            return qr.query(sql, new BeanListHandler<Product>(Product.class),pfalg);
         } catch (SQLException e) {
             e.printStackTrace();
         }

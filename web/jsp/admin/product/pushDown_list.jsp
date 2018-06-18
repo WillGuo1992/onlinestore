@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <HTML>
 	<HEAD>
@@ -21,14 +22,7 @@
 							<strong>商品列表</strong>
 						</TD>
 					</tr>
-					<tr>
-						<td class="ta_01" align="right">
-							<button type="button" id="add" name="add" value="添加" class="button_add" onclick="addProduct()">
-&#28155;&#21152;
-</button>
 
-						</td>
-					</tr>
 					<tr>
 						<td class="ta_01" align="center" bgColor="#f5fafe">
 							<table cellspacing="0" cellpadding="1" rules="all"
@@ -56,35 +50,39 @@
 										上架
 									</td>
 								</tr>
-										<tr onmouseover="this.style.backgroundColor = 'white'"
-											onmouseout="this.style.backgroundColor = '#F5FAFE';">
-											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="18%">
-												1
-											</td>
-											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="17%">
-												<img width="40" height="45" src="${ pageContext.request.contextPath }/products/1/c_0037.jpg">
-											</td>
-											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="17%">
-												笔记本
-											</td>
-											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="17%">
-												998
-											</td>
-											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
-												width="17%">
-													是(1)/否(0)
-											</td>
-											<td align="center" style="HEIGHT: 22px">
-												<a href="#">
-													<img src="${pageContext.request.contextPath}/img/admin/i_edit.gif" border="0" style="CURSOR: hand">
-												</a>
-											</td>
-									
-										</tr>
+								<c:forEach items="${list}" var="product" varStatus="status">
+									<tr onmouseover="this.style.backgroundColor = 'white'"
+										onmouseout="this.style.backgroundColor = '#F5FAFE';">
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+											width="18%">
+											${status.count}
+										</td>
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+											width="17%">
+											<img width="40" height="45" src="${product.pimage}">
+										</td>
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+											width="17%">
+											${product.pname}
+										</td>
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+											width="17%">${product.shop_price}
+										</td>
+										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
+											width="17%">
+											<c:if test="${product.is_hot==1}">是</c:if>
+											<c:if test="${product.is_hot==0}">否</c:if>
+										</td>
+										<td align="center" style="HEIGHT: 22px">
+											<a href="/AdminProductServlet?method=pushUp&pid=${product.pid}" onclick="return confirm('确认上架商品?')">
+												<img src="${pageContext.request.contextPath}/img/admin/i_edit.gif" border="0" style="CURSOR: hand">
+											</a>
+										</td>
+
+									</tr>
+
+								</c:forEach>
+
 							</table>
 						</td>
 					</tr>

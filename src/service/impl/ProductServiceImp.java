@@ -53,4 +53,19 @@ public class ProductServiceImp implements ProductService {
         return productDao.findCategoryByCid(cid);
     }
 
+    @Override
+    public void save(Product product) {
+        productDao.save(product);
+    }
+
+    @Override
+    public void offShow(String pid,int pflag) {
+        productDao.updatePflagByPid(pid,pflag);
+    }
+
+    @Override
+    public List findAllByPflag(int pfalg) {
+        return productDao.findAllByPflag(pfalg);
+    }
+
 }

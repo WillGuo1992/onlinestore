@@ -15,6 +15,10 @@ public class PageBean <T> {
     private int totalPage;
     private int startIndex;
     private List<T> data;
+    private String url;
+    private int prePageNum;
+    private int nextPageNum;
+
 
     public PageBean(int pageNumber, int pageSize, int totalRecord) {
         this.pageSize = pageSize;
@@ -72,6 +76,28 @@ public class PageBean <T> {
 
     public void setData(List<T> data) {
         this.data = data;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public int getPrePageNum() {
+        return pageNumber>1?(pageNumber-1):1;
+    }
+
+
+    public int getNextPageNum() {
+
+        return pageNumber<totalPage?pageNumber+1:totalPage;
+    }
+
+    public void setNextPageNum(int nextPageNum) {
+        this.nextPageNum = nextPageNum;
     }
 }
 

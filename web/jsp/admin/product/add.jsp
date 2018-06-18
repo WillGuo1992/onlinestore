@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" pageEncoding="UTF-8"%>
 <HTML>
 	<HEAD>
@@ -63,9 +64,9 @@
 					</td>
 					<td class="ta_01" bgColor="#ffffff" colspan="3">
 						<select name="cid">
-								<option value="1">服装</option>
-								<option value="2">服装2</option>
-								<option value="3">服装3</option>
+							<c:forEach items="${list}" var="category">
+								<option value="${category.cid}">${category.cname}</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>

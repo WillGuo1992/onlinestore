@@ -8,7 +8,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/public.js"></script>
 		<script type="text/javascript">
 			function addProduct(){
-				window.location.href = "${pageContext.request.contextPath}/admin/product/add.jsp";
+				window.location.href = "/AdminProductServlet?method=addUI";
 			}
 		</script>
 	</HEAD>
@@ -57,7 +57,7 @@
 										下架
 									</td>
 								</tr>
-								<c:forEach items="${page.list}" var="p" varStatus="status">
+								<c:forEach items="${page.data}" var="p" varStatus="status">
 										<tr onmouseover="this.style.backgroundColor = 'white'"
 											onmouseout="this.style.backgroundColor = '#F5FAFE';">
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
@@ -78,17 +78,18 @@
 											</td>
 											<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 												width="17%">
-													是(1)/否(0)
+												<c:if test="${p.is_hot=='1'}">是</c:if>
+												<c:if test="${p.is_hot=='0'}">否</c:if>
 											</td>
 											<td align="center" style="HEIGHT: 22px">
-												<a href="">
+												<a href="/AdminProductServlet?method=editUI&pid=${p.pid}">
 													<img src="${pageContext.request.contextPath}/img/admin/i_edit.gif" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 									
 											<td align="center" style="HEIGHT: 22px">
 												<%--下架 pushdown --%>
-												<a href="${pageContext.request.contextPath}/">
+												<a href="/AdminProductServlet?method=offshow&pid=${p.pid}" onclick="return confirm('确定下架${p.pname}?')">
 													<img src="${pageContext.request.contextPath}/img/admin/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 												</a>
 											</td>

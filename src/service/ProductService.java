@@ -21,4 +21,10 @@ public interface ProductService {
     List findPageByCid(String cid, PageBean<Product> pageBean);
 
     Category getCategorybyCid(String cid);
+
+    void save(Product product);
+
+    void offShow(String pid,int pflag);
+
+    List findAllByPflag(int i);
 }

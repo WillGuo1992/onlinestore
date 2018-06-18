@@ -19,4 +19,10 @@ public interface ProductDao {
     List findPageByCid(String cid, int startIndex, int pageSize);
 
     Category findCategoryByCid(String cid);
+
+    void save(Product product);
+
+    void updatePflagByPid(String pid, int pflag);
+
+    List findAllByPflag(int pfalg);
 }
