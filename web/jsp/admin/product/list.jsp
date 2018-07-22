@@ -8,7 +8,7 @@
 		<script type="text/javascript" src="${pageContext.request.contextPath}/js/public.js"></script>
 		<script type="text/javascript">
 			function addProduct(){
-				window.location.href = "/AdminProductServlet?method=addUI";
+				window.location.href = "${pageContext.request.contextPath}/AdminProductServlet?method=addUI";
 			}
 		</script>
 	</HEAD>
@@ -82,14 +82,14 @@
 												<c:if test="${p.is_hot=='0'}">否</c:if>
 											</td>
 											<td align="center" style="HEIGHT: 22px">
-												<a href="/AdminProductServlet?method=editUI&pid=${p.pid}">
+												<a href="${pageContext.request.contextPath}/AdminProductServlet?method=editUI&pid=${p.pid}">
 													<img src="${pageContext.request.contextPath}/img/admin/i_edit.gif" border="0" style="CURSOR: hand">
 												</a>
 											</td>
 									
 											<td align="center" style="HEIGHT: 22px">
 												<%--下架 pushdown --%>
-												<a href="/AdminProductServlet?method=offshow&pid=${p.pid}" onclick="return confirm('确定下架${p.pname}?')">
+												<a href="${pageContext.request.contextPath}/AdminProductServlet?method=offshow&pid=${p.pid}" onclick="return confirm('确定下架${p.pname}?')">
 													<img src="${pageContext.request.contextPath}/img/admin/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 												</a>
 											</td>

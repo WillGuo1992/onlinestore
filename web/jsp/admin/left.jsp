@@ -37,7 +37,7 @@
 
                     d.add('0104','01','商品管理');
                     d.add('010401','0104','商品管理','${pageContext.request.contextPath}/AdminProductServlet?method=findAllProductsWithPage&num=1','提示信息','mainFrame');
-                    d.add('010402','0104','已下架商品管理','/AdminProductServlet?method=pushDownUI','','mainFrame');
+                    d.add('010402','0104','已下架商品管理','${pageContext.request.contextPath}/AdminProductServlet?method=pushDownUI','','mainFrame');
 
 
                     d.add('0105','01','订单管理');

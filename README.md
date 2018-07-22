@@ -1,17 +1,20 @@
 #网上商城
 ##技术点
 * jsp+servlet
+* bootstramp : 前端布局
 * tomcat:服务器组件
 * mysql:数据库
 * c3p0:数据库连接池
 * dbutils：数据库操作工具类
 * filter:过滤器 过滤编码问题和自动登录
+* EL表达式
 * javamail:自动发送邮件激活账号
 * cookie : 客户端自动登录
 * session : 服务器端全网登录
 * json: 部分前后端数据传输
 * Redis : 内存Nosql数据库
 * easyui : 分页控件
+* dTree : 树形控件
 
 ##功能点
 1. 用户模块

@@ -34,7 +34,7 @@
                         <tr class="active">
                             <td width="60" width="40%">
                                 <input type="hidden" name="id" value="22">
-                                <img src="../${item.product.pimage}" width="70" height="60">
+                                <img src="${pageContext.request.contextPath}/${item.product.pimage}" width="70" height="60">
                             </td>
                             <td width="30%">
                                 <a target="_blank">${item.product.pname}</a>
@@ -61,7 +61,7 @@
         </div>
     </div>
     <hr>
-    <form method="post" action="/OrderServlet" id="orderForm">
+    <form method="post" action="OrderServlet" id="orderForm">
         <input type="hidden" name="method" value="payOrder">
         <input type="hidden" name="oid" value="${order.oid}">
         <div class="row">

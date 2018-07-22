@@ -10,9 +10,9 @@
 <html>
 <head>
     <title>首页</title>
-    <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -32,17 +32,17 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img src="../img/ad/1.jpg" alt="...">
+                        <img src="${pageContext.request.contextPath}/img/ad/1.jpg" alt="...">
                         <div class="carousel-caption">
                         </div>
                     </div>
                     <div class="item">
-                        <img src="../img/ad/2.jpg" alt="...">
+                        <img src="${pageContext.request.contextPath}/img/ad/2.jpg" alt="...">
                         <div class="carousel-caption">
                         </div>
                     </div>
                     <div class="item">
-                        <img src="../img/ad/3.jpg" alt="...">
+                        <img src="${pageContext.request.contextPath}/img/ad/3.jpg" alt="...">
                         <div class="carousel-caption">
                         </div>
                     </div>
@@ -66,7 +66,7 @@
     <div class="row">
         <div class="col-md12">
             <h2>热门商品
-            <img src="../img/title2.jpg">
+            <img src="${pageContext.request.contextPath}/img/title2.jpg">
             </h2>
         </div>
     </div>
@@ -74,21 +74,21 @@
     <%--热门商品--%>
     <div class="row">
         <div class="col-md-2" style="border:1px solid #E7E7E7;border-right:0;padding:0;">
-            <img src="products/hao/big01.jpg" width="205" height="404" style="display: inline-block;"/>
+            <img src="${pageContext.request.contextPath}/products/hao/big01.jpg" width="205" height="404" style="display: inline-block;"/>
         </div>
         <div class="col-md-10">
             <div class="col-md-6" style="text-align:center;height:200px;padding:0px;">
                 <a href="#">
-                    <img src="products/hao/middle01.jpg" width="100%" height="200px" style="display: inline-block;">
+                    <img src="${pageContext.request.contextPath}/products/hao/middle01.jpg" width="100%" height="200px" style="display: inline-block;">
                 </a>
             </div>
 
             <c:forEach items="${hotProducts}" var="product">
                 <div class="col-md-2" style="text-align:center;height:200px;padding:10px 0px;">
-                    <a href="/ProductServlet?method=findbyid&pid=${product.pid}">
+                    <a href="${pageContext.request.contextPath}/ProductServlet?method=findbyid&pid=${product.pid}">
                         <img src="${product.pimage}" width="130" height="130" style="display: inline-block;">
                     </a>
-                    <p><a href="/ProductServlet?method=findbyid&pid=${product.pid}" style='color:#666'>${product.pname}</a></p>
+                    <p><a href="${pageContext.request.contextPath}/ProductServlet?method=findbyid&pid=${product.pid}" style='color:#666'>${product.pname}</a></p>
                     <p><font color="#E4393C" style="font-size:16px">&yen;${product.shop_price}</font></p>
                 </div>
             </c:forEach>
@@ -98,7 +98,7 @@
     <br>
     <div class="row">
         <div class="col-md-12">
-            <img src="products/hao/ad.jpg" width="100%"/>
+            <img src="${pageContext.request.contextPath}/products/hao/ad.jpg" width="100%"/>
         </div>
     </div>
 
@@ -107,26 +107,26 @@
     <div class="row">
         <div class="col-md12">
             <h2>最新商品
-                <img src="../img/title2.jpg">
+                <img src="${pageContext.request.contextPath}/img/title2.jpg">
             </h2>
         </div>
     </div>
     <div class="row">
         <div class="col-md-2" style="border:1px solid #E7E7E7;border-right:0;padding:0;">
-            <img src="products/hao/big01.jpg" width="205" height="404" style="display: inline-block;"/>
+            <img src="${pageContext.request.contextPath}/products/hao/big01.jpg" width="205" height="404" style="display: inline-block;"/>
         </div>
         <div class="col-md-10">
             <div class="col-md-6" style="text-align:center;height:200px;padding:0px;">
                 <a href="#">
-                    <img src="products/hao/middle01.jpg" width="100%" height="200px" style="display: inline-block;">
+                    <img src="${pageContext.request.contextPath}/products/hao/middle01.jpg" width="100%" height="200px" style="display: inline-block;">
                 </a>
             </div>
             <c:forEach items="${newProducts}" var="product">
                 <div class="col-md-2" style="text-align:center;height:200px;padding:10px 0px;">
-                    <a href="/ProductServlet?method=findbyid&pid=${product.pid}">
+                    <a href="${pageContext.request.contextPath}/ProductServlet?method=findbyid&pid=${product.pid}">
                         <img src="${product.pimage}" width="130" height="130" style="display: inline-block;">
                     </a>
-                    <p><a href="/ProductServlet?method=findbyid&pid=${product.pid}" style='color:#666'>${product.pname}</a></p>
+                    <p><a href="${pageContext.request.contextPath}/ProductServlet?method=findbyid&pid=${product.pid}" style='color:#666'>${product.pname}</a></p>
                     <p><font color="#E4393C" style="font-size:16px">&yen;${product.shop_price}</font></p>
                 </div>
             </c:forEach>

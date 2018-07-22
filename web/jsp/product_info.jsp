@@ -9,14 +9,14 @@
 <html>
 <head>
     <title>商品详情</title>
-    <script src="../js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            var url = "/ProductServlet";
+            var url = "ProductServlet";
             var paras = {"method":"getCnamebyPid","pid":"${product.pid}"}
             $.post(url,paras,function (data) {
                 $("#categoryName").text(data.cname);
-                $("#categoryName").attr("href","/ProductServlet?method=findByCid&cid="+data.cid);
+                $("#categoryName").attr("href","${pageContext.request.contextPath}/ProductServlet?method=findByCid&cid="+data.cid);
             });
         });
     </script>
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div style="border: 1px solid #e4e4e4;width:100%;margin-bottom:10px;margin:0 auto;padding:10px;margin-bottom:10px;">
-                        <a href="/IndexServlet">首页</a>>
+                        <a href="${pageContext.request.contextPath}/IndexServlet">首页</a>>
                         <a href="#" id="categoryName">填充</a>>
                         <a href="#">${product.pname}</a>
                     </div>
@@ -69,13 +69,13 @@
                                 ${product.pdesc}
                                 <br>	&ensp;	&ensp;
                             </div>
-                            <form method="get" action="/CartServlet">
+                            <form method="get" action="${pageContext.request.contextPath}/CartServlet">
                                 <div style="margin:20px 0 10px 0;;text-align: center;">
                                     购买数量:<input id="quantity" name="count" value="1" type="text" />
                                     <br>
                                     <input type="hidden" name="method" value="addToCart">
                                     <input type="hidden" name="pid" value="${product.pid}">
-                                    <input value="加入购物车" type="submit" style="margin-top: 20px;background: url('../img/product.gif') no-repeat scroll 0 -600px rgba(0, 0, 0, 0);height:36px;width:127px;">
+                                    <input value="加入购物车" type="submit" style="margin-top: 20px;background: url('${pageContext.request.contextPath}/img/product.gif') no-repeat scroll 0 -600px rgba(0, 0, 0, 0);height:36px;width:127px;">
 
                                 </div>
                             </form>

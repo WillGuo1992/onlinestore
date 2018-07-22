@@ -71,7 +71,7 @@ public class AddProductServlet extends HttpServlet {
 
             ProductService productService = new ProductServiceImp();
             productService.save(product);
-            resp.sendRedirect("/AdminProductServlet?method=findAllProductsWithPage");
+            resp.sendRedirect("AdminProductServlet?method=findAllProductsWithPage");
         } catch (Exception e) {
             e.printStackTrace();
         }

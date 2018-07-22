@@ -29,13 +29,13 @@
 <table width="100%" height="70%"  border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td width="100%" >
-           <img src="/img/admin/top_100.jpg" width="100%" height="100%">
+           <img src="${pageContext.request.contextPath }/img/admin/top_100.jpg" width="100%" height="100%">
         </td>
     </tr>
 </table>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <td height="30" valign="bottom" background="/img/admin/mis_01.jpg">
+        <td height="30" valign="bottom" background="${pageContext.request.contextPath }/img/admin/mis_01.jpg">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td width="85%" align="left">

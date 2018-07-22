@@ -63,13 +63,13 @@
                                 ${c.cname}
                         </td>
                         <td align="center" style="HEIGHT: 22px">
-                            <a href="/AdminCategoryServlet?method=editUI&cname=${c.cname}">
+                            <a href="${pageContext.request.contextPath}/AdminCategoryServlet?method=editUI&cname=${c.cname}">
                                 <img src="${pageContext.request.contextPath}/img/admin/i_edit.gif" border="0" style="CURSOR: hand">
                             </a>
                         </td>
 
                         <td align="center" style="HEIGHT: 22px">
-                            <a href="/AdminCategoryServlet?method=deleteCat&cname=${c.cname}" onclick="return confirm('您确定删除么?')">
+                            <a href="${pageContext.request.contextPath}AdminCategoryServlet?method=deleteCat&cname=${c.cname}" onclick="return confirm('您确定删除么?')">
                                 <img src="${pageContext.request.contextPath}/img/admin/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
                             </a>
                         </td>

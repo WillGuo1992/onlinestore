@@ -27,7 +27,7 @@
             var username = $("#username").val();
             var str = username
             var data={"username":username};
-            $.post("/UserServlet?method=checkUsername",data,function (data) {
+            $.post("UserServlet?method=checkUsername",data,function (data) {
                 if (data!=null){
                     $("#msg").text(data);
                 } else {
@@ -49,12 +49,12 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<div class="container" style="background: url('../img/regist_bg.jpg');">
+<div class="container" style="background: url('${pageContext.request.contextPath}/img/regist_bg.jpg');">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8" style="background: #fff; padding: 40px 80px ; margin: 30px; border: 7px solid #ccc; " >
             <span><font color="#6495ed" size="5">会员注册</font>USER REGISTER</span>
-            <form class="form-horizontal" style="margin-top: 10px " action="UserServlet?method=register" method="post">
+            <form class="form-horizontal" style="margin-top: 10px " action="${pageContext.request.contextPath}/UserServlet?method=register" method="post">
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">用户名</label>
                     <div class="col-sm-10">
@@ -127,14 +127,14 @@
                     </div>
                     <div class="col-sm-1"></div>
                     <div class="col-sm-3">
-                        <img id="checkcode2" src="/UserServlet?method=getCheckCodePic" style="width: 100%; padding-top: 5px" onclick="getnewPic()" alt="点击更换一张" ></img>
+                        <img id="checkcode2" src="UserServlet?method=getCheckCodePic" style="width: 100%; padding-top: 5px" onclick="getnewPic()" alt="点击更换一张" ></img>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <input type="submit" width="100" value="注册" name="submit" style="background: url('../img/register.gif'); height: 35px;width: 100px; color: white">
-                        <input type="reset" width="100" value="清空" style="background: url('../img/register.gif'); margin-left: 50px;height: 35px;width: 100px; color: white">
+                        <input type="submit" width="100" value="注册" name="submit" style="background: url('${pageContext.request.contextPath}/img/register.gif'); height: 35px;width: 100px; color: white">
+                        <input type="reset" width="100" value="清空" style="background: url('${pageContext.request.contextPath}/img/register.gif'); margin-left: 50px;height: 35px;width: 100px; color: white">
                     </div>
                 </div>
 

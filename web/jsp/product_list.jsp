@@ -10,13 +10,13 @@
 <html>
 <head>
     <title>商品分类</title>
-    <link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.5.5.2/themes/bootstrap/easyui.css">
-    <link rel="stylesheet" type="text/css" href="../js/jquery-easyui-1.5.5.2/themes/icon.css">
-    <script type="text/javascript" src="../js/jquery-easyui-1.5.5.2/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-easyui-1.5.5.2/themes/bootstrap/easyui.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/js/jquery-easyui-1.5.5.2/themes/icon.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-easyui-1.5.5.2/jquery.min.js"></script>
     <script type="text/javascript">
         var $180 = $;
     </script>
-    <script type="text/javascript" src="../js/jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-easyui-1.5.5.2/jquery.easyui.min.js"></script>
 
     <script type="text/javascript">
         $180(function() {
@@ -26,13 +26,13 @@
                 pageNumber:${pageBean.pageNumber},
                 pageList:[12,18,24],
                 onSelectPage:function (pageNumber, pageSize) {
-                    window.location.href = "/ProductServlet?method=findByCid" +
+                    window.location.href = "${pageContext.request.contextPath}/ProductServlet?method=findByCid" +
                         "&cid="+${pageBean.data[0].cid}+
                     "&pageNumber="+pageNumber+"&pageSize="+pageSize;
                 }
             });
 
-            var url = "/ProductServlet";
+            var url = "${pageContext.request.contextPath}/ProductServlet";
             var paras = {"method":"getCnamebyCid","cid":"${pageBean.data[0].cid}"}
             $.post(url,paras,function (data) {
                 $("#categoryName").text(data.cname);
@@ -46,7 +46,7 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a href="/IndexServlet">首页</a></li>>
+                <li><a href="${pageContext.request.contextPath}/IndexServlet">首页</a></li>>
                 <li><a id="categoryName" href="#"></a></li>
             </ol>
         </div>
@@ -54,7 +54,7 @@
     <div class="row">
         <c:forEach items="${pageBean.data}" var="product">
             <div class="col-md-2" style="height: 260px;">
-                <a href="/ProductServlet?method=findbyid&pid=${product.pid}">
+                <a href="${pageContext.request.contextPath}/ProductServlet?method=findbyid&pid=${product.pid}">
                     <img src="${product.pimage}" width="100%">
                     <div align="center"><font color="#5f9ea0">${product.pname}</font></div>
                     <div align="center"><font color="red">商城价:￥${product.shop_price}元</font></div>

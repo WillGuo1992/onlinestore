@@ -31,13 +31,13 @@
                     <c:forEach items="${cart.map}" var="entryset">
                         <tr class="active">
                             <td width="60">
-                                <img src="/${entryset.value.product.pimage}" style="width: 60px">
+                                <img src="${pageContext.request.contextPath}/${entryset.value.product.pimage}" style="width: 60px">
                             </td>
                             <td width="30%">${entryset.value.product.pname}</td>
                             <td width="20%">￥${entryset.value.product.shop_price}</td>
                             <td width="10%">${entryset.value.count}</td>
                             <td width="15%">￥${entryset.value.itemTotal}</td>
-                            <td width="15%"><a href="/CartServlet?method=deleteOneItem&pid=${entryset.value.product.pid}">删除</a></td>
+                            <td width="15%"><a href="${pageContext.request.contextPath}/CartServlet?method=deleteOneItem&pid=${entryset.value.product.pid}">删除</a></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -47,9 +47,9 @@
                     商品金额:<strong><font color="red" size="5">￥${cart.total}元</font></strong>
                 </div>
                 <div style="text-align:right;margin-top:10px;margin-right: 30px;">
-                    <a href="/CartServlet?method=deleteAll">清空购物车</a>
-                    <input type="button" value="提交订单" style="background: url('../img/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
-						height:35px;width:100px;color:white; " onclick="window.location.href = '/OrderServlet?method=saveorder';
+                    <a href="${pageContext.request.contextPath}/CartServlet?method=deleteAll">清空购物车</a>
+                    <input type="button" value="提交订单" style="background: url('${pageContext.request.contextPath}/img/register.gif') no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+						height:35px;width:100px;color:white; " onclick="window.location.href = '${pageContext.request.contextPath}/OrderServlet?method=saveorder';
 						">
                 </div>
             </div>

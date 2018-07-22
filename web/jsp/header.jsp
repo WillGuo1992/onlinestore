@@ -3,16 +3,16 @@
 <html>
 <head>
 
-    <script src="../js/jquery-1.11.3.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="${pageContext.request.contextPath}/js/jquery-1.11.3.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
         $(function () {
-            var url = "/IndexServlet";
+            var url = "${pageContext.request.contextPath}/IndexServlet";
             $.post(url,{"method":"getcategories"},function (data) {
                 $.each(data , function (index, element) {
-                    $("#menu").append("<li><a href='/ProductServlet?method=findByCid&cid="+element.cid+"'>"+ element.cname +"</a></li>");
+                    $("#menu").append("<li><a href='${pageContext.request.contextPath}/ProductServlet?method=findByCid&cid="+element.cid+"'>"+ element.cname +"</a></li>");
                 })
             });
         });
@@ -22,19 +22,19 @@
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-3"><img src="../img/logo_new1.jpg" height="8%"></div>
-        <div class="col-md-5"><img src="../img/header.png" ></div>
+        <div class="col-md-3"><img src="${pageContext.request.contextPath}/img/logo_new1.jpg" height="8%"></div>
+        <div class="col-md-5"><img src="${pageContext.request.contextPath}/img/header.png" ></div>
         <div class="col-md-4" style="padding-top: 20px">
             <ol class="list-inline">
                 <c:if test="${empty user}">
-                    <li><a href="/UserServlet?method=loginUI">登录</a></li>
-                    <li><a href="/UserServlet?method=registerUI">注册</a></li>
+                    <li><a href="${pageContext.request.contextPath}/UserServlet?method=loginUI">登录</a></li>
+                    <li><a href="${pageContext.request.contextPath}/UserServlet?method=registerUI">注册</a></li>
                 </c:if>
                 <c:if test="${not empty user}">
                     <li><a href="#">欢迎您,${user.name}</a></li>
-                    <li><a href="/jsp/cart.jsp">我的购物车</a></li>
-                    <li><a href="/OrderServlet?method=findOrdersByUid&uid=${user.uid}">我的订单</a></li>
-                    <li><a href="/UserServlet?method=logout">注销</a></li>
+                    <li><a href="${pageContext.request.contextPath}/jsp/cart.jsp">我的购物车</a></li>
+                    <li><a href="${pageContext.request.contextPath}/OrderServlet?method=findOrdersByUid&uid=${user.uid}">我的订单</a></li>
+                    <li><a href="${pageContext.request.contextPath}/UserServlet?method=logout">注销</a></li>
                 </c:if>
             </ol>
         </div>
@@ -53,7 +53,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/IndexServlet">首页</a>
+                        <a class="navbar-brand" href="${pageContext.request.contextPath}/IndexServlet">首页</a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->

@@ -59,7 +59,7 @@
 										</td>
 										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 											width="17%">
-											<img width="40" height="45" src="${product.pimage}">
+											<img width="40" height="45" src="${pageContext.request.contextPath}/${product.pimage}">
 										</td>
 										<td style="CURSOR: hand; HEIGHT: 22px" align="center"
 											width="17%">
@@ -74,7 +74,7 @@
 											<c:if test="${product.is_hot==0}">否</c:if>
 										</td>
 										<td align="center" style="HEIGHT: 22px">
-											<a href="/AdminProductServlet?method=pushUp&pid=${product.pid}" onclick="return confirm('确认上架商品?')">
+											<a href="${pageContext.request.contextPath}/AdminProductServlet?method=pushUp&pid=${product.pid}" onclick="return confirm('确认上架商品?')">
 												<img src="${pageContext.request.contextPath}/img/admin/i_edit.gif" border="0" style="CURSOR: hand">
 											</a>
 										</td>

@@ -27,13 +27,13 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-<div class="container" style="background: url('../img/loginbg.jpg')">
+<div class="container" style="background: url('${pageContext.request.contextPath}/img/loginbg.jpg')">
     <div class="row">
         <div class="col-md-7"></div>
         <div class="col-md-5"
              style="width:440px;border:1px solid #E7E7E7;padding:20px 0 20px 30px;border-radius:5px;margin-top:60px; margin-bottom: 60px;background:#fff;">
             <span><font color="#6495ed" size="5">会员登录</font>USER LOGIN</span>
-            <form class="form-horizontal" style="margin-top: 10px;" action="/UserServlet?method=login" method="post">
+            <form class="form-horizontal" style="margin-top: 10px;" action="${pageContext.request.contextPath}/UserServlet?method=login" method="post">
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">用户名</label>
                     <div class="col-sm-8">
@@ -56,7 +56,7 @@
                                placeholder="验证码"></input>
                     </div>
                     <div class="col-sm-3">
-                        <img id="checkcode2" src="/UserServlet?method=getCheckCodePic"
+                        <img id="checkcode2" src="${pageContext.request.contextPath}/UserServlet?method=getCheckCodePic"
                              style="width: 100%; padding-top: 5px" onclick="getnewPic()" alt="点击更换一张"></img>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="submit" width="100" value="登录" name="submit"
-                               style="background: url('../img/register.gif'); height: 35px;width: 100px; color: white">
+                               style="background: url('${pageContext.request.contextPath}/img/register.gif'); height: 35px;width: 100px; color: white">
                     </div>
                 </div>
 
